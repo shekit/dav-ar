@@ -1,0 +1,10 @@
+.DS_Store
+*.csproj
+Build/
+etc/
+obj/
+Temp/
+UnityPackageManager/
+Library/
+story.sln
+story.userprefs

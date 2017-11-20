@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 51e2404e594d84286b114dde0d7771e3
+timeCreated: 1511066078
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: drone_alone:drone
+    100004: drone_alone:drone_body
+    100006: drone_alone:leg_1
+    100008: drone_alone:leg_2
+    100010: drone_alone:leg_3
+    100012: drone_alone:leg_4
+    100014: drone_alone:legs
+    100016: drone_alone:package
+    100018: drone_alone:pCube1
+    100020: drone_alone:pCube1 1
+    100022: drone_alone:pCube1 2
+    100024: drone_alone:pCube1 3
+    100026: drone_alone:pCylinder2
+    100028: drone_alone:pCylinder2 1
+    100030: drone_alone:pCylinder2 2
+    100032: drone_alone:pCylinder2 3
+    100034: drone_alone:RotorGroup_1
+    100036: drone_alone:RotorGroup_2
+    100038: drone_alone:RotorGroup_3
+    100040: drone_alone:RotorGroup_4
+    100042: drone_alone:skid_1
+    100044: drone_alone:skid_2
+    400000: //RootNode
+    400002: drone_alone:drone
+    400004: drone_alone:drone_body
+    400006: drone_alone:leg_1
+    400008: drone_alone:leg_2
+    400010: drone_alone:leg_3
+    400012: drone_alone:leg_4
+    400014: drone_alone:legs
+    400016: drone_alone:package
+    400018: drone_alone:pCube1
+    400020: drone_alone:pCube1 1
+    400022: drone_alone:pCube1 2
+    400024: drone_alone:pCube1 3
+    400026: drone_alone:pCylinder2
+    400028: drone_alone:pCylinder2 1
+    400030: drone_alone:pCylinder2 2
+    400032: drone_alone:pCylinder2 3
+    400034: drone_alone:RotorGroup_1
+    400036: drone_alone:RotorGroup_2
+    400038: drone_alone:RotorGroup_3
+    400040: drone_alone:RotorGroup_4
+    400042: drone_alone:skid_1
+    400044: drone_alone:skid_2
+    2300000: drone_alone:drone_body
+    2300002: drone_alone:leg_1
+    2300004: drone_alone:leg_2
+    2300006: drone_alone:leg_3
+    2300008: drone_alone:leg_4
+    2300010: drone_alone:package
+    2300012: drone_alone:pCube1
+    2300014: drone_alone:pCube1 1
+    2300016: drone_alone:pCube1 2
+    2300018: drone_alone:pCube1 3
+    2300020: drone_alone:pCylinder2
+    2300022: drone_alone:pCylinder2 1
+    2300024: drone_alone:pCylinder2 2
+    2300026: drone_alone:pCylinder2 3
+    2300028: drone_alone:skid_1
+    2300030: drone_alone:skid_2
+    3300000: drone_alone:drone_body
+    3300002: drone_alone:leg_1
+    3300004: drone_alone:leg_2
+    3300006: drone_alone:leg_3
+    3300008: drone_alone:leg_4
+    3300010: drone_alone:package
+    3300012: drone_alone:pCube1
+    3300014: drone_alone:pCube1 1
+    3300016: drone_alone:pCube1 2
+    3300018: drone_alone:pCube1 3
+    3300020: drone_alone:pCylinder2
+    3300022: drone_alone:pCylinder2 1
+    3300024: drone_alone:pCylinder2 2
+    3300026: drone_alone:pCylinder2 3
+    3300028: drone_alone:skid_1
+    3300030: drone_alone:skid_2
+    4300000: drone_alone:package
+    4300002: drone_alone:leg_1
+    4300004: drone_alone:leg_2
+    4300006: drone_alone:leg_3
+    4300008: drone_alone:leg_4
+    4300010: drone_alone:skid_1
+    4300012: drone_alone:skid_2
+    4300014: drone_alone:drone_body
+    4300016: drone_alone:pCylinder2
+    4300018: drone_alone:pCube1
+    4300020: drone_alone:pCylinder2
+    4300022: drone_alone:pCube1
+    4300024: drone_alone:pCylinder2
+    4300026: drone_alone:pCube1
+    4300028: drone_alone:pCylinder2
+    4300030: drone_alone:pCube1
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: drone_alone_blinn1
+    second: {fileID: 2100000, guid: 1f203c893e36d4995b83aacec0074b6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: drone_alone_lambert2
+    second: {fileID: 2100000, guid: efb751207529244c9bdc3114d2e4d231, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: drone_alone_phong1
+    second: {fileID: 2100000, guid: a7ca124a3a3f345c4a7aca29c06ca0cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 9e62e0179496c42b191241ea6e0ab585, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: 0fe90c7246c1843b38ef822a2546f0af
+timeCreated: 1511066082
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: backlight
+    100002: body
+    100004: //RootNode
+    100006: front_fender
+    100008: headlight
+    100010: lattice_1
+    100012: lights
+    100014: rear_fender
+    100016: wheel1_1
+    100018: wheel_1
+    400000: backlight
+    400002: body
+    400004: //RootNode
+    400006: front_fender
+    400008: headlight
+    400010: lattice_1
+    400012: lights
+    400014: rear_fender
+    400016: wheel1_1
+    400018: wheel_1
+    2300000: backlight
+    2300002: body
+    2300004: front_fender
+    2300006: headlight
+    2300008: lattice_1
+    2300010: rear_fender
+    2300012: wheel1_1
+    2300014: wheel_1
+    3300000: backlight
+    3300002: body
+    3300004: front_fender
+    3300006: headlight
+    3300008: lattice_1
+    3300010: rear_fender
+    3300012: wheel1_1
+    3300014: wheel_1
+    4300000: lattice_1
+    4300002: rear_fender
+    4300004: front_fender
+    4300006: body
+    4300008: headlight
+    4300010: backlight
+    4300012: wheel_1
+    4300014: wheel1_1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Low_Poly_Racing_Car1_car body
+    second: {fileID: 2100000, guid: 1338d446271824f3d8cda38f6845fdc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Low_Poly_Racing_Car1_engine grille
+    second: {fileID: 2100000, guid: 25d4c31ef09e944a1b40f6b52cc3c6f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Low_Poly_Racing_Car1_glass
+    second: {fileID: 2100000, guid: 441ee1039caee47109925b3b2a2b69ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Low_Poly_Racing_Car1_headlight1
+    second: {fileID: 2100000, guid: 58e60216ed81d414eb326b4fe1ba933c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Low_Poly_Racing_Car1_rear lights
+    second: {fileID: 2100000, guid: b065c163e782c404fb1b7f8e1a4bfee2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Low_Poly_Racing_Car1_wheels
+    second: {fileID: 2100000, guid: ee129e786ec194bdd967684c1e1a41c3, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
