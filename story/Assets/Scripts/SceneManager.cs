@@ -7,7 +7,7 @@ public class SceneManager : Singleton<SceneManager> {
 	public GameObject marker;
 	public GameObject drone;
 	public GameObject car;
-	public Transform scene;
+	private Transform scene;
 
 	Dictionary<int, GameObject> drones = new Dictionary<int, GameObject>();
 	Dictionary<int, GameObject> cars = new Dictionary<int, GameObject>();
@@ -15,6 +15,46 @@ public class SceneManager : Singleton<SceneManager> {
 	public Transform[] dronePositions = new Transform[4];
 	public Transform[] carPositions = new Transform[3];
 	public Transform[] markerPositions = new Transform[3];
+
+	private bool markerCreated = false;
+
+	public void showBids(string type){
+
+		if (type == "drone") {
+
+			for (int i = 0; i < dronePositions.Length; i++) {
+				drones [i].SendMessage ("showBid", true);
+			}
+
+		} else if (type == "car") {
+
+			for (int i = 0; i < carPositions.Length; i++) {
+				cars [i].SendMessage ("showBid", true);
+			}
+		}
+	}
+
+	void Update(){
+		if (Input.GetKeyDown ("z")) {
+			showBids ("drone");
+		}
+		if (Input.GetKeyDown ("x")) {
+			showBids ("car");
+		}
+		if (Input.GetKeyDown ("m")) {
+			createMarker ();
+		}
+
+	}
+
+	public void createMarker(){
+		int rnd = Random.Range (0, markerPositions.Length);
+
+		GameObject m = Instantiate (marker, markerPositions [rnd].position, Quaternion.identity);
+		m.transform.parent = scene;
+		m.transform.localPosition = markerPositions [rnd].localPosition;
+		markerCreated = true;
+	}
 
 	public void startScene(Transform parent){
 		scene = parent;

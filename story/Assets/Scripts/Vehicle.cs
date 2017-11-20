@@ -29,6 +29,9 @@ public class Vehicle : MonoBehaviour {
 	public float waitAtTarget = 1.5F;
 	public float waitToDestroy = 4.0F;
 
+	public int minBid = 18;
+	public int maxBid = 27;
+
 	private int id;
 
 	// Use this for initialization
@@ -149,8 +152,13 @@ public class Vehicle : MonoBehaviour {
 
 
 	public void showBid(bool show){
+		if (show) {
+			int rnd = Random.Range (minBid, maxBid);
+			rotateBidToCamera ();
+			setBidValue (rnd.ToString());
+		}
+
 		bid.SetActive (show);
-		rotateBidToCamera ();
 		anim.SetBool ("showBid", show);
 	}
 
