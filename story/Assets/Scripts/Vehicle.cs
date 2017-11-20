@@ -101,6 +101,7 @@ public class Vehicle : MonoBehaviour {
 			} else if (gameObject.tag == "car") {
 				StartCoroutine ("moveCoroutine");
 			}
+			SceneManager.Instance.setProgressStatus ("Trip in Progress");
 		}
 	}
 
@@ -121,6 +122,7 @@ public class Vehicle : MonoBehaviour {
 		}
 		SceneManager.Instance.removePackage (tag);
 		goAway = true;
+		SceneManager.Instance.setProgressStatus ("Package Collected");
 		StartCoroutine ("destroyMarker");
 		StartCoroutine ("destroyObject");
 	}

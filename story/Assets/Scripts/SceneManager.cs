@@ -27,7 +27,8 @@ public class SceneManager : Singleton<SceneManager> {
 	private bool markerCreated = false;
 
 	void Awake(){
-		showUI (false);
+		ui.SetActive (false);
+		progress.SetActive (false);
 	}
 
 	public void showUI(bool show){
@@ -37,6 +38,7 @@ public class SceneManager : Singleton<SceneManager> {
 
 	public IEnumerator showBids(string type){
 		yield return new WaitForSeconds (showBidIn);
+		setProgressStatus ("Autonomous Bidding");
 		if (type == "drone") {
 
 			for (int i = 0; i < dronePositions.Length; i++) {
@@ -51,8 +53,13 @@ public class SceneManager : Singleton<SceneManager> {
 		}
 	}
 
+	public void setProgressStatus(string s){
+		progress.SendMessage("setStatus", s);
+	}
+
 	public IEnumerator showRadars(string type) {
 		yield return new WaitForSeconds (showRadarIn);
+		setProgressStatus ("Vehicles Notified");
 		if (type == "drone") {
 			for (int i = 0; i < dronePositions.Length; i++) {
 				drones [i].SendMessage ("showRadar", true);
@@ -90,6 +97,7 @@ public class SceneManager : Singleton<SceneManager> {
 			return;
 		}
 		showUI (false);
+		setProgressStatus ("Request Received");
 		int rnd = Random.Range (0, markerPositions.Length);
 
 		GameObject m = Instantiate (marker, markerPositions [rnd].position, Quaternion.identity);
@@ -129,6 +137,7 @@ public class SceneManager : Singleton<SceneManager> {
 		
 	public IEnumerator selectVehicle(string type){
 		yield return new WaitForSeconds (selectVehicleIn);
+		setProgressStatus ("AV selected");
 		if (type == "drone") {
 
 			int rnd = Random.Range (0, dronePositions.Length);
