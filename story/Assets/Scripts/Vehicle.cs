@@ -6,6 +6,7 @@ public class Vehicle : MonoBehaviour {
 
 	private GameObject radar;
 	private GameObject bid;
+	private GameObject package;
 	private TextMesh bidValue;
 	private Animator anim;
 	public Transform targett;
@@ -44,17 +45,21 @@ public class Vehicle : MonoBehaviour {
 		localStartPosition = transform.localPosition;
 		showRadar (false);
 		showBid (false);
-		setTarget (targett); // FOR TESTING, OTHERWISE TARGET WILL BE ASSIGNED
+
+		if (tag == "drone") {
+			package = gameObject.transform.Find ("package").gameObject;
+			showPackage (false);
+		}
+		//setTarget (targett); // FOR TESTING, OTHERWISE TARGET WILL BE ASSIGNED
 	}
 
 	public void setId(int num){
-		Debug.Log ("Setting ID");
-		Debug.Log (num);
 		id = num;
 	}
 	
 	// Update is called once per frame
 	public void setTarget(Transform t){
+		Debug.Log ("SET TARGET");
 		target = t;
 		targetSet = true;
 	}
@@ -66,10 +71,14 @@ public class Vehicle : MonoBehaviour {
 		bid.transform.rotation = rotation;
 	}
 		
-	public void rotateTowardsTarget(Transform target){
+	public void rotateTowardsTarget(){
 		if (!targetSet) {
+			Debug.Log ("NO TARGET");
 			return;
-		}
+		} 
+
+		rotateToTarget = true;
+
 		// vector from current position to target
 		Vector3 dir = target.position - transform.position;
 		// prevent it from tilting up or down
@@ -107,13 +116,24 @@ public class Vehicle : MonoBehaviour {
 
 	IEnumerator goawayCoroutine(){
 		yield return new WaitForSeconds (waitAtTarget);
+		if (tag == "drone") {
+			showPackage (true);
+		}
+		SceneManager.Instance.removePackage (tag);
 		goAway = true;
+		StartCoroutine ("destroyMarker");
 		StartCoroutine ("destroyObject");
+	}
+
+	IEnumerator destroyMarker(){
+		yield return new WaitForSeconds (1.0F);
+		SceneManager.Instance.destroyMarker ();
 	}
 
 	IEnumerator destroyObject(){
 		yield return new WaitForSeconds (waitToDestroy);
 		SceneManager.Instance.placeVehicle (localStartPosition, gameObject.tag, id);
+		SceneManager.Instance.changeMarkerCreatedStatus ();
 		Destroy (gameObject);
 	}
 
@@ -130,6 +150,16 @@ public class Vehicle : MonoBehaviour {
 			startMoving = false;
 			StartCoroutine ("goawayCoroutine");
 		}
+	}
+
+	public void showPackage(bool show){
+		package.SetActive (show);
+	}
+
+	public IEnumerator gotSelected(){
+		yield return new WaitForSeconds (0.5f);
+		showBid (false);
+		showRadar (false);
 	}
 
 	public void showRadar(bool show){
@@ -193,7 +223,7 @@ public class Vehicle : MonoBehaviour {
 		}
 
 		if (rotateToTarget) {
-			rotateTowardsTarget (target);
+			rotateTowardsTarget ();
 		}
 
 		if (startMoving) {

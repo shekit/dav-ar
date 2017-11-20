@@ -7,7 +7,15 @@ public class SceneManager : Singleton<SceneManager> {
 	public GameObject marker;
 	public GameObject drone;
 	public GameObject car;
+	public GameObject ui;
+	public GameObject progress;
 	private Transform scene;
+	private GameObject currentMarker;
+
+	public float showRadarIn = 1.0f;
+	public float showBidIn = 2.0f;
+	public float selectVehicleIn = 4.5F;
+
 
 	Dictionary<int, GameObject> drones = new Dictionary<int, GameObject>();
 	Dictionary<int, GameObject> cars = new Dictionary<int, GameObject>();
@@ -18,8 +26,17 @@ public class SceneManager : Singleton<SceneManager> {
 
 	private bool markerCreated = false;
 
-	public void showBids(string type){
+	void Awake(){
+		showUI (false);
+	}
 
+	public void showUI(bool show){
+		ui.SetActive (show);
+		progress.SetActive (!show);
+	}
+
+	public IEnumerator showBids(string type){
+		yield return new WaitForSeconds (showBidIn);
 		if (type == "drone") {
 
 			for (int i = 0; i < dronePositions.Length; i++) {
@@ -34,6 +51,20 @@ public class SceneManager : Singleton<SceneManager> {
 		}
 	}
 
+	public IEnumerator showRadars(string type) {
+		yield return new WaitForSeconds (showRadarIn);
+		if (type == "drone") {
+			for (int i = 0; i < dronePositions.Length; i++) {
+				drones [i].SendMessage ("showRadar", true);
+			}
+		} else if (type == "car") {
+
+			for (int i = 0; i < carPositions.Length; i++) {
+				cars [i].SendMessage ("showRadar", true);
+			}
+		}
+	}
+
 	void Update(){
 		if (Input.GetKeyDown ("z")) {
 			showBids ("drone");
@@ -42,18 +73,89 @@ public class SceneManager : Singleton<SceneManager> {
 			showBids ("car");
 		}
 		if (Input.GetKeyDown ("m")) {
-			createMarker ();
+			createMarker ("drone");
 		}
-
+		if (Input.GetKeyDown ("1")) {
+			Debug.Log ("one");
+			selectVehicle ("drone");
+		}
+		if (Input.GetKeyDown ("2")) {
+			selectVehicle ("car");
+		}
 	}
 
-	public void createMarker(){
+	public void createMarker(string type){
+		if (markerCreated) {
+			// can send back socket message if needed here to notify user
+			return;
+		}
+		showUI (false);
 		int rnd = Random.Range (0, markerPositions.Length);
 
 		GameObject m = Instantiate (marker, markerPositions [rnd].position, Quaternion.identity);
 		m.transform.parent = scene;
 		m.transform.localPosition = markerPositions [rnd].localPosition;
 		markerCreated = true;
+		currentMarker = m;
+
+		if (type == "drone") {
+			currentMarker.SendMessage ("showPackage", true);
+		} else if (type == "car") {
+			currentMarker.SendMessage ("showPoint", true);
+		}
+
+		StartCoroutine (showRadars (type));
+		StartCoroutine (showBids (type));
+		StartCoroutine (selectVehicle(type));
+	}
+
+	public void removePackage(string type){
+		if (type == "drone") {
+			currentMarker.SendMessage ("showPackage", false);
+		} else if (type == "car") {
+			currentMarker.SendMessage ("showPoint", false);
+		}
+	}
+
+	public void destroyMarker(){
+		//markerCreated = false;
+		Destroy (currentMarker);
+	}
+
+	public void changeMarkerCreatedStatus(){
+		markerCreated = false;
+		showUI (true);
+	}
+		
+	public IEnumerator selectVehicle(string type){
+		yield return new WaitForSeconds (selectVehicleIn);
+		if (type == "drone") {
+
+			int rnd = Random.Range (0, dronePositions.Length);
+			for (int i = 0; i < dronePositions.Length; i++) {
+				if (i != rnd) {
+					drones [i].SendMessage ("showBid", false);
+					drones [i].SendMessage ("showRadar", false);
+				}
+			}
+			drones [rnd].SendMessage ("setTarget", currentMarker.transform);
+			drones [rnd].SendMessage ("rotateTowardsTarget");
+			drones [rnd].SendMessage ("gotSelected");
+
+		} else if (type == "car") {
+
+			int rnd = Random.Range (0, carPositions.Length);
+			for (int i = 0; i < carPositions.Length; i++) {
+				if (i != rnd) {
+					cars [i].SendMessage ("showBid", false);
+					cars [i].SendMessage ("showRadar", false);
+				}
+			}
+			cars [rnd].SendMessage ("setTarget", currentMarker.transform);
+			cars [rnd].SendMessage ("rotateTowardsTarget");
+			cars [rnd].SendMessage ("gotSelected");
+
+		}
 	}
 
 	public void startScene(Transform parent){
@@ -75,6 +177,8 @@ public class SceneManager : Singleton<SceneManager> {
 			c.SendMessage ("setId", i);
 			cars.Add (i, c);
 		}
+
+		showUI (true);
 	}
 
 	public void placeVehicle(Vector3 position, string vehicleType, int id){

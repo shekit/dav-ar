@@ -68,7 +68,7 @@ public class PlaceMessage : Singleton<PlaceMessage> {
 
 	public void createMessageTest(){
 		Vector3 pos = new Vector3 (Camera.main.transform.position.x, Camera.main.transform.position.y-.4f,
-			Camera.main.transform.position.z + 1f);
+			Camera.main.transform.position.z + 1.5f);
 
 		CreateMessage (startScene, pos);
 	}
