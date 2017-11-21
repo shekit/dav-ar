@@ -9,6 +9,10 @@ public class SceneManager : Singleton<SceneManager> {
 	public GameObject car;
 	public GameObject ui;
 	public GameObject progress;
+	public GameObject sliders;
+
+	private bool slidersOn = false;
+
 	private Transform scene;
 	private GameObject currentMarker;
 
@@ -26,8 +30,11 @@ public class SceneManager : Singleton<SceneManager> {
 
 	private bool markerCreated = false;
 
+
+
 	void Awake(){
 		ui.SetActive (false);
+		sliders.SetActive (false);
 		progress.SetActive (false);
 	}
 
@@ -113,6 +120,11 @@ public class SceneManager : Singleton<SceneManager> {
 		if (Input.GetKeyDown ("2")) {
 			selectVehicle ("car");
 		}
+	}
+
+	public void toggleSliders(){
+		slidersOn = !slidersOn;
+		sliders.SetActive (slidersOn);
 	}
 
 	public void createMarker(string type){

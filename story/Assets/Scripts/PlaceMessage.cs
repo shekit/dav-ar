@@ -17,6 +17,9 @@ public class PlaceMessage : Singleton<PlaceMessage> {
 
 	private Vector3 startPoint;
 
+	private float sceneSize = 1.0f;
+	private float sceneRotation = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 		UnityARSessionNativeInterface.ARAnchorAddedEvent += AnchorAdded;
@@ -64,6 +67,21 @@ public class PlaceMessage : Singleton<PlaceMessage> {
 		DestroyScene ();
 		DestroyMarker ();
 		msgIsCreated = false;
+	}
+
+	public void RotateScene(float val){
+		Debug.Log (val);
+		if (msgIsCreated) {
+			scene.transform.rotation = Quaternion.Euler (0, val * 360, 0);
+			sceneRotation = val;
+		}
+	}
+
+	public void ResizeScene(float val){
+		if (msgIsCreated) {
+			scene.transform.localScale = new Vector3 (val, val, val);
+			sceneSize = val;
+		}
 	}
 
 	public void createMessageTest(){
