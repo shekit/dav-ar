@@ -21,8 +21,8 @@ public class SceneManager : Singleton<SceneManager> {
 	Dictionary<int, GameObject> cars = new Dictionary<int, GameObject>();
 
 	public Transform[] dronePositions = new Transform[4];
-	public Transform[] carPositions = new Transform[3];
-	public Transform[] markerPositions = new Transform[3];
+	public Transform[] carPositions = new Transform[4];
+	public Transform[] markerPositions = new Transform[10];
 
 	private bool markerCreated = false;
 
@@ -46,8 +46,8 @@ public class SceneManager : Singleton<SceneManager> {
 					drones [i].SendMessage ("showBid", true);
 				} else {
 					Debug.Log ("ERROR TO EXISTING DRONE - SHOW BID");
-					setProgressStatus ("Error Bidding - Please try again");
-					StartCoroutine ("unknownError");
+					//setProgressStatus ("Error Bidding - Please try again");
+					//StartCoroutine ("unknownError");
 				}
 			}
 
@@ -58,8 +58,8 @@ public class SceneManager : Singleton<SceneManager> {
 					cars [i].SendMessage ("showBid", true);
 				} else {
 					Debug.Log ("ERROR TO EXISTING CAR - SHOW BID");
-					setProgressStatus ("Error Bidding - Please try again");
-					StartCoroutine ("unknownError");
+					//setProgressStatus ("Error Bidding - Please try again");
+					//StartCoroutine ("unknownError");
 				}
 			}
 		}
@@ -77,9 +77,9 @@ public class SceneManager : Singleton<SceneManager> {
 				if (drones [i] != null) {
 					drones [i].SendMessage ("showRadar", true);
 				} else {
-					Debug.Log ("ERROR TO EXISTING DRONE - SHOW RADAR");
-					setProgressStatus ("Error Notifying - Please try again");
-					StartCoroutine ("unknownError");
+					Debug.Log ("ERROR TO EXISTING DRONE - SHOW RADAR " + i.ToString());
+					//setProgressStatus ("Error Notifying - Please try again");
+					//StartCoroutine ("unknownError");
 				}
 			}
 		} else if (type == "car") {
@@ -88,9 +88,9 @@ public class SceneManager : Singleton<SceneManager> {
 				if (cars [i] != null) {
 					cars [i].SendMessage ("showRadar", true);
 				} else {
-					Debug.Log ("ERROR TO EXISTING CAR - SHOW RADAR");
-					setProgressStatus ("Error Notifying - Please try again");
-					StartCoroutine ("unknownError");
+					Debug.Log ("ERROR TO EXISTING CAR - SHOW RADAR " + i.ToString());
+					//setProgressStatus ("Error Notifying - Please try again");
+					//StartCoroutine ("unknownError");
 				}
 			}
 		}
@@ -161,6 +161,11 @@ public class SceneManager : Singleton<SceneManager> {
 
 	public void changeMarkerCreatedStatus(){
 		markerCreated = false;
+		StartCoroutine ("delayUIShow");
+	}
+
+	IEnumerator delayUIShow(){
+		yield return new WaitForSeconds (1.0f);
 		showUI (true);
 	}
 		
@@ -177,8 +182,9 @@ public class SceneManager : Singleton<SceneManager> {
 						drones [i].SendMessage ("showRadar", false);
 					} else {
 						Debug.Log ("ERROR TO EXISTING DRONE - SELECT VEHICLE");
-						setProgressStatus ("Drone Failure - Please try again");
+						setProgressStatus ("Drone Failure - Try again");
 						StartCoroutine ("unknownError");
+						yield break;
 					}
 				}
 			}
@@ -188,13 +194,15 @@ public class SceneManager : Singleton<SceneManager> {
 				drones [rnd].SendMessage ("gotSelected");
 			} else {
 				Debug.Log("ERROR TO SELECTED DRONE - SELECT-VEHICLE");
-				setProgressStatus ("Drone Failure - Please try again");
+				setProgressStatus ("Drone Failure - Try again");
 				StartCoroutine ("unknownError");
+				yield break;
 			}
 
 		} else if (type == "car") {
-
+			Debug.Log ("CAR LENGTH "+carPositions.Length.ToString());
 			int rnd = Random.Range (0, carPositions.Length);
+			Debug.Log ("SELECTED CAR " + rnd.ToString ());
 			for (int i = 0; i < carPositions.Length; i++) {
 				if (i != rnd) {
 					if (cars [i] != null) {
@@ -202,8 +210,9 @@ public class SceneManager : Singleton<SceneManager> {
 						cars [i].SendMessage ("showRadar", false);
 					} else {
 						Debug.Log ("ERROR TO EXISTING CAR - SELECT VEHICLE");
-						setProgressStatus ("Car Failure - Please try again");
+						setProgressStatus ("Car Failure - Try again");
 						StartCoroutine ("unknownError");
+						yield break;
 					}
 				}
 			}
@@ -213,8 +222,9 @@ public class SceneManager : Singleton<SceneManager> {
 				cars [rnd].SendMessage ("gotSelected");
 			} else {
 				Debug.Log("ERROR TO SELECTED CAR - SELECT-VEHICLE");
-				setProgressStatus ("Car Failure - Please try again");
+				setProgressStatus ("Car Failure - Try again");
 				StartCoroutine ("unknownError");
+				yield break;
 			}
 
 		}
@@ -244,21 +254,22 @@ public class SceneManager : Singleton<SceneManager> {
 	}
 
 	public void placeVehicle(Vector3 position, string vehicleType, int id){
-
+		Debug.Log ("ID RECEIVED " + id.ToString ());
 		var randomRotation = Quaternion.Euler (0, Random.Range (0, 360), 0);
 		if (vehicleType == "drone") {
 			GameObject d = Instantiate (drone, position, randomRotation);
 			d.transform.parent = scene;
 			d.transform.localPosition = position;
+			d.SendMessage ("setId", id);
 			drones [id] = d;
-			Debug.Log ("Instantiate Drone" + id.ToString());
+			Debug.Log ("Instantiate Drone " + id.ToString());
 		} else if (vehicleType == "car") {
 			GameObject c = Instantiate (car, position, randomRotation);
-			drones [id] = c;
 			c.transform.parent = scene;
 			c.transform.localPosition = position;
+			c.SendMessage ("setId", id);
 			cars [id] = c;
-			Debug.Log ("Instantiate car" + id.ToString());
+			Debug.Log ("Instantiate car " + id.ToString());
 		}
 	}
 }

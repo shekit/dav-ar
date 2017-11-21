@@ -59,7 +59,7 @@ public class Vehicle : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void setTarget(Transform t){
-		Debug.Log ("SET TARGET");
+		//Debug.Log ("SET TARGET");
 		target = t;
 		targetSet = true;
 	}
@@ -92,7 +92,7 @@ public class Vehicle : MonoBehaviour {
 
 		// stop rotation when certain threshold of difference is met
 		if (Quaternion.Angle (rotation, transform.rotation) <= rotateError) {
-			Debug.Log ("Done");
+			//Debug.Log ("Done");
 			rotateToTarget = false;
 
 			if (gameObject.tag == "drone") {
