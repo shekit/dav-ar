@@ -1252,3 +1252,5 @@ MonoBehaviour:
   distance: 0.01
   waitAtTarget: 1.5
   waitToDestroy: 4
+  minBid: 18
+  maxBid: 27

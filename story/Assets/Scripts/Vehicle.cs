@@ -159,9 +159,16 @@ public class Vehicle : MonoBehaviour {
 	}
 
 	public IEnumerator gotSelected(){
-		yield return new WaitForSeconds (0.5f);
+		anim.SetBool ("showRadar", false);
+		showSelected (true);
+		yield return new WaitForSeconds (1.5f);
+		showSelected (false);
 		showBid (false);
 		showRadar (false);
+	}
+
+	public void showSelected(bool show){
+		anim.SetBool ("selected", show);
 	}
 
 	public void showRadar(bool show){

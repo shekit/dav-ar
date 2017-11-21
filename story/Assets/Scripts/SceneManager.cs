@@ -201,7 +201,6 @@ public class SceneManager : Singleton<SceneManager> {
 			Debug.Log ("Instantiate Drone");
 		} else if (vehicleType == "car") {
 			GameObject c = Instantiate (car, position, randomRotation);
-			drones [id] = c;
 			c.transform.parent = scene;
 			c.transform.localPosition = position;
 			cars [id] = c;
