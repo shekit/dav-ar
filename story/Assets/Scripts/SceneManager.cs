@@ -10,6 +10,7 @@ public class SceneManager : Singleton<SceneManager> {
 	public GameObject ui;
 	public GameObject progress;
 	public GameObject sliders;
+	public GameObject introCanvas;
 
 	private bool slidersOn = false;
 
@@ -243,6 +244,7 @@ public class SceneManager : Singleton<SceneManager> {
 	}
 
 	public void startScene(Transform parent){
+		introCanvas.SetActive (false);
 		scene = parent;
 		for (int i = 0; i < dronePositions.Length; i++) {
 			var randomRotation = Quaternion.Euler (0, Random.Range (0, 360), 0);
@@ -273,6 +275,7 @@ public class SceneManager : Singleton<SceneManager> {
 			d.transform.parent = scene;
 			d.transform.localPosition = position;
 			d.SendMessage ("setId", id);
+			d.SendMessage ("setScale");
 			drones [id] = d;
 			Debug.Log ("Instantiate Drone " + id.ToString());
 		} else if (vehicleType == "car") {
@@ -280,6 +283,7 @@ public class SceneManager : Singleton<SceneManager> {
 			c.transform.parent = scene;
 			c.transform.localPosition = position;
 			c.SendMessage ("setId", id);
+			c.SendMessage ("setScale");
 			cars [id] = c;
 			Debug.Log ("Instantiate car " + id.ToString());
 		}

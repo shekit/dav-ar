@@ -24,6 +24,10 @@ public class PlaceMessage : Singleton<PlaceMessage> {
 	void Start () {
 		UnityARSessionNativeInterface.ARAnchorAddedEvent += AnchorAdded;
 	}
+
+	public float getSceneSize(){
+		return sceneSize;
+	}
 	
 	void CreateMessage(GameObject go, Vector3 position){
 		msgIsCreated = true;
@@ -70,7 +74,6 @@ public class PlaceMessage : Singleton<PlaceMessage> {
 	}
 
 	public void RotateScene(float val){
-		Debug.Log (val);
 		if (msgIsCreated) {
 			scene.transform.rotation = Quaternion.Euler (0, val * 360, 0);
 			sceneRotation = val;

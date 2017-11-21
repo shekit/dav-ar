@@ -56,6 +56,13 @@ public class Vehicle : MonoBehaviour {
 	public void setId(int num){
 		id = num;
 	}
+
+
+	public void setScale(){
+		float val = PlaceMessage.Instance.getSceneSize ();
+		Vector3 local = gameObject.transform.localScale;
+		gameObject.transform.localScale = new Vector3 (local.x, local.y, local.z) * val;
+	}
 	
 	// Update is called once per frame
 	public void setTarget(Transform t){
