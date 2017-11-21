@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1437881747225970}
   m_IsPrefabParent: 1
+--- !u!1 &1005041654000324
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4350196057579286}
+  m_Layer: 0
+  m_Name: front-wheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1018427704254824
 GameObject:
   m_ObjectHideFlags: 0
@@ -21,6 +36,21 @@ GameObject:
   - component: {fileID: 4509104964340706}
   m_Layer: 0
   m_Name: ring
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1036342400458704
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4044007022021150}
+  m_Layer: 0
+  m_Name: back-wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,6 +371,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4044007022021150
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036342400458704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.015, z: -0.056}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4857202870167340}
+  m_Father: {fileID: 4610956255662530}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4164302921923150
 Transform:
   m_ObjectHideFlags: 1
@@ -439,6 +483,20 @@ Transform:
   m_Father: {fileID: 4678081297821712}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4350196057579286
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005041654000324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0135, z: 0.0695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4507178941983876}
+  m_Father: {fileID: 4610956255662530}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4476844347671096
 Transform:
   m_ObjectHideFlags: 1
@@ -459,11 +517,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1163731760196784}
   m_LocalRotation: {x: 0.004590787, y: -5.551853e-17, z: -1.4798653e-18, w: 0.99998945}
-  m_LocalPosition: {x: -0.000022618564, y: 0.0337561, z: 0.02368814}
-  m_LocalScale: {x: 0.099999994, y: 0.09999998, z: 0.09999998}
+  m_LocalPosition: {x: -0.000022618562, y: 0.020256095, z: -0.04581192}
+  m_LocalScale: {x: 0.09999999, y: 0.099999964, z: 0.099999964}
   m_Children: []
-  m_Father: {fileID: 4610956255662530}
-  m_RootOrder: 5
+  m_Father: {fileID: 4350196057579286}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4509104964340706
 Transform:
@@ -533,8 +591,8 @@ Transform:
   - {fileID: 4212754040729960}
   - {fileID: 4183472670074360}
   - {fileID: 4731753639633954}
-  - {fileID: 4507178941983876}
-  - {fileID: 4857202870167340}
+  - {fileID: 4350196057579286}
+  - {fileID: 4044007022021150}
   m_Father: {fileID: 4184386043850706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -614,11 +672,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1407444839291246}
   m_LocalRotation: {x: 0.004590787, y: -5.551853e-17, z: -1.4798653e-18, w: 0.99998945}
-  m_LocalPosition: {x: -0.000022618564, y: 0.012860573, z: -0.05141378}
-  m_LocalScale: {x: 0.099999994, y: 0.09999998, z: 0.09999998}
+  m_LocalPosition: {x: -0.000022618562, y: -0.0021394268, z: 0.004586231}
+  m_LocalScale: {x: 0.09999999, y: 0.099999964, z: 0.099999964}
   m_Children: []
-  m_Father: {fileID: 4610956255662530}
-  m_RootOrder: 6
+  m_Father: {fileID: 4044007022021150}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23101206095544380
 MeshRenderer:

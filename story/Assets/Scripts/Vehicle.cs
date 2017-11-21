@@ -99,6 +99,7 @@ public class Vehicle : MonoBehaviour {
 				StartCoroutine ("riseCoroutine");
 				anim.SetBool ("rotors", true);
 			} else if (gameObject.tag == "car") {
+				anim.SetBool ("rotors", true);
 				StartCoroutine ("moveCoroutine");
 			}
 			SceneManager.Instance.setProgressStatus ("Trip in Progress");
@@ -134,6 +135,7 @@ public class Vehicle : MonoBehaviour {
 
 	IEnumerator destroyObject(){
 		yield return new WaitForSeconds (waitToDestroy);
+		SceneManager.Instance.setProgressStatus ("Package Delivered");
 		SceneManager.Instance.placeVehicle (localStartPosition, gameObject.tag, id);
 		SceneManager.Instance.changeMarkerCreatedStatus ();
 		Destroy (gameObject);

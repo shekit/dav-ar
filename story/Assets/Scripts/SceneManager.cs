@@ -165,7 +165,7 @@ public class SceneManager : Singleton<SceneManager> {
 	}
 
 	IEnumerator delayUIShow(){
-		yield return new WaitForSeconds (1.0f);
+		yield return new WaitForSeconds (1.3f);
 		showUI (true);
 	}
 		
