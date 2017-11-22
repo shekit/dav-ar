@@ -16,4 +16,10 @@ public class Marker : MonoBehaviour {
 	public void showPoint(bool show){
 		point.SetActive (show);
 	}
+
+	public void setScale(){
+		float val = PlaceMessage.Instance.getSceneSize ();
+		Vector3 local = gameObject.transform.localScale;
+		gameObject.transform.localScale = new Vector3 (local.x, local.y, local.z) * val;
+	}
 }

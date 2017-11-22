@@ -45,7 +45,7 @@ public class Vehicle : MonoBehaviour {
 		localStartPosition = transform.localPosition;
 		showRadar (false);
 		showBid (false);
-
+		anim.SetBool ("appear", true);
 		if (tag == "drone") {
 			package = gameObject.transform.Find ("package").gameObject;
 			showPackage (false);
@@ -190,7 +190,7 @@ public class Vehicle : MonoBehaviour {
 	}
 
 	private void rise(float speed){
-		if (transform.position.y - startPosition.y <= riseHeight) {
+		if (transform.position.y - startPosition.y <= (riseHeight*PlaceMessage.Instance.getSceneSize())) {
 			transform.position += transform.up * Time.deltaTime * speed;
 		} else {
 			startRising = false;

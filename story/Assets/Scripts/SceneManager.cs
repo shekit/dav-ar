@@ -139,7 +139,9 @@ public class SceneManager : Singleton<SceneManager> {
 
 		GameObject m = Instantiate (marker, markerPositions [rnd].position, Quaternion.identity);
 		m.transform.parent = scene;
-		m.transform.localPosition = markerPositions [rnd].localPosition;
+		Vector3 pos = markerPositions [rnd].localPosition;
+		m.transform.localPosition = new Vector3 (pos.x, pos.y * PlaceMessage.Instance.getSceneSize (), pos.z);
+		m.SendMessage ("setScale");
 		markerCreated = true;
 		currentMarker = m;
 
